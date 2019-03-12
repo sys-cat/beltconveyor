@@ -1,5 +1,15 @@
 package main
 
+import (
+	"fmt"
+	"os"
+
+	"github.com/sys-cat/beltconveyor"
+)
+
 func main() {
-	return
+	item := beltconveyor.New("")
+	fmt.Printf("%#v", item)
+
+	os.Exit(0)
 }
