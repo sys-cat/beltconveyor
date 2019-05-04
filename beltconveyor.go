@@ -20,12 +20,12 @@ func New(path string) Beltconveyor {
 	}
 }
 
-func (b *Beltconveyor) Open() (err error) {
-	b.File, err = os.Open(b.ReadPath)
-	return err
-}
-
 func (b *Beltconveyor) Decode() (err error) {
+	b.File, err = os.Open(b.ReadPath)
+	if err != nil {
+		return err
+	}
+	defer b.File.Close()
 	b.Config, b.Extension, err = image.DecodeConfig(b.File)
 	return err
 }
